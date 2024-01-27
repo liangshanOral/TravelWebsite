@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+    <meta name="author" content="Zephyr">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Routes</title>
+    <link rel="stylesheet" href="Map.css">
+</head>
+
+<header>
+  <div class="logo">
+    <a href="index.html"> <!-- 假设主页文件是 index.html -->
+      <img src="photos/logo-trans.png" alt="TravelRoute's Logo">
+      </a>
+    TravelRoute
+  </div>
+  <div class="shopping-cart" onclick="toggleCart()">Cart</div>
+  </header>
+
+<body>
+  <div id="flights">
+    <div class="overlay-text">
+    <h1>Discover</h1>
+    <h1>story-worthy</h1>
+    <h1>travel </h1>
+    <h1>moments</h1>
+  </div>
+  <div id="graph" style="width: 100%; height: 450px;"></div>
+  </div>
+  <p class="centered-text">Explore China Right Now!</p>
+  <div id="chinamap" style="width: 100%; height: 450px;">
+    <canvas id="container"></canvas>
+  </div>
+  <p class="centered-text">Find The PLACE You Love!</p>
+  <div id="map" style="width: 100%; height: 500px;"></div>
+
+<footer>
+    <p>© 2023 TravelRoute. All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=jVR9BTsdfsxzTn69kkHQHif2vdwccdEm"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+<script src="Flights.js"></script>  
+<script src="chinamap.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=jVR9BTsdfsxzTn69kkHQHif2vdwccdEm"></script>
+<script src="Map.js"></script>
+
+</body>
+</html>

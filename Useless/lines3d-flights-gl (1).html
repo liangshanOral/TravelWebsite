@@ -1,0 +1,131 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=lines3d-flights-gl&gl=1
+-->
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=jVR9BTsdfsxzTn69kkHQHif2vdwccdEm"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/china.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.3/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    var ROOT_PATH = 'https://echarts.apache.org/examples';
+    var option;
+
+    var uploadedDataURL = 'http://localhost:8000/flights.json';
+
+myChart.showLoading();
+$.getJSON(uploadedDataURL, function (data) {
+  myChart.hideLoading();
+  function getAirportCoord(idx) {
+    return [data.airports[idx][3], data.airports[idx][4]];
+  }
+  var routes = data.routes.map(function (airline) {
+    return [getAirportCoord(airline[1]), getAirportCoord(airline[2])];
+  });
+  myChart.setOption({
+    geo3D: {
+      map: 'world',
+      shading: 'realistic',
+      silent: true,
+      environment: '#333',
+      realisticMaterial: {
+        roughness: 0.8,
+        metalness: 0
+      },
+      postEffect: {
+        enable: true
+      },
+      groundPlane: {
+        show: false
+      },
+      light: {
+        main: {
+          intensity: 1,
+          alpha: 30
+        },
+        ambient: {
+          intensity: 0
+        }
+      },
+      viewControl: {
+        distance: 70,
+        alpha: 89,
+        panMouseButton: 'left',
+        rotateMouseButton: 'right'
+      },
+      itemStyle: {
+        color: '#000'
+      },
+      regionHeight: 0.5
+    },
+    series: [
+      {
+        type: 'lines3D',
+        coordinateSystem: 'geo3D',
+        effect: {
+          show: true,
+          trailWidth: 1,
+          trailOpacity: 0.5,
+          trailLength: 0.2,
+          constantSpeed: 5
+        },
+        blendMode: 'lighter',
+        lineStyle: {
+          width: 0.2,
+          opacity: 0.05
+        },
+        data: routes
+      }
+    ]
+  });
+  window.addEventListener('keydown', function () {
+    myChart.dispatchAction({
+      type: 'lines3DToggleEffect',
+      seriesIndex: 0
+    });
+  });
+});
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

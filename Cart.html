@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="author" content="Zephyr">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Routes</title>
+    <link rel="stylesheet" href="Cart.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html"> <!-- 假设主页文件是 index.html -->
+      <img src="photos/logo-trans.png" alt="TravelRoute's Logo">
+      </a>
+    TravelRoute
+  </div>
+  <div class="shopping-cart">Cart</div>
+</header>
+
+<main class="content-container">
+  <div class="cart_photo">
+    <img src="photos/travel.jpg" alt="Travel With Us">
+  </div>
+
+  <div class="cart_product">
+  <!-- 购物车内容将在这里动态生成 -->
+    <div class="cart-total-container">
+      <!-- 总金额显示 -->
+      <span id="totalAmount" class="total-amount"></span>
+      <!-- 结算按钮 -->
+      <button id="calculateTotal" class="btn btn-success calculate-total">Calculate Total</button>
+  </div>
+</div>
+</main>
+
+<footer>
+    <p>© 2023 TravelRoute. All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="Cart.js"></script>
+</body>
+</html>

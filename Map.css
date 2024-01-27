@@ -1,0 +1,89 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    background: #333;
+    color: #fff;
+  }
+
+    /* 修改logo样式，使得文字和logo图片垂直居中对齐 */
+  .logo {
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 垂直居中 */
+    gap: 1px; /* logo图片和文字之间的间隙 */
+  }
+
+  /* 设置logo图片的大小以适应header */
+  .logo img {
+    height: 4em; /* logo的大小与文字的行高一致 */
+  }
+    
+  /* Shopping cart icon */
+  .shopping-cart {
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .shopping-cart:hover {
+    color: #87CEEB;
+  }
+
+  #flights {
+    position: relative; /* 确保这个容器是相对定位 */
+    width: 100%; /* 宽度 */
+    height: 450px; /* 高度，确保足以包含图表和文本 */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%; /* 放置在容器中垂直居中位置 */
+    transform: translateY(-50%); /* 使用transform属性来垂直居中 */
+    left: 0; /* 放置在容器左侧 */
+    z-index: 10; /* 确保它在图表之上 */
+    color: white; /* 文字颜色 */
+    font-size: 32px; /* 大字体大小 */
+    font-weight: bold; /* 字体加粗 */
+    padding: 10px; /* 内边距 */
+    opacity: 0.8;
+}
+
+#graph {
+    position: relative; /* 确保这个容器是相对定位 */
+    z-index: 1; /* 确保这个值低于 .overlay-text */
+    width: 100%; /* 宽度 */
+    height: 450px; /* 高度，确保与 #flights 容器尺寸一致 */
+    /* 其他必要的样式 */
+}
+
+  .centered-text {
+    text-align: center; /* 文本居中 */
+    color: white; /* 白色文本颜色 */
+    font-size: 20px; /* 字体大小 */
+    font-weight: bold; /* 字体加粗 */
+    background-color: #333;
+}
+
+   /* Footer */
+   footer {
+    text-align: center;
+    padding: 15px;
+    background: #333;
+    color: #fff;
+  }
+
+  /* 中等屏幕尺寸（例如平板电脑） */
+  @media (max-width: 768px) {
+    .route-card h4 {
+        font-size: 2vw; /* 较小屏幕上使用更大的视口单位 */
+        top: 50%;
+    }
+  }
+  

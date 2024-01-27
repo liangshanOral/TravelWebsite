@@ -1,0 +1,144 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    background: #333;
+    color: #fff;
+  }
+
+    /* 修改logo样式，使得文字和logo图片垂直居中对齐 */
+  .logo {
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 垂直居中 */
+    gap: 1px; /* logo图片和文字之间的间隙 */
+  }
+
+  /* 设置logo图片的大小以适应header */
+  .logo img {
+    height: 4em; /* logo的大小与文字的行高一致 */
+  }
+    
+  /* Shopping cart icon */
+  .shopping-cart {
+    font-size: 20px;
+  }
+
+  .content-container {
+    display: flex;  /* 或者 'grid'，取决于您的布局需求 */
+    justify-content: space-around; /* 子元素之间保持平均间距 */
+    padding: 20px; /* 适当的内边距 */
+    max-height: 90vh; /* 最大高度不超过视口高度 */
+    overflow-y: auto; /* 如果内容超出，允许垂直滚动 */
+}
+  
+  /* 图片区域样式 */
+  .cart_photo {
+    flex: 1; /* 图片区域占据可用空间的一部分 */
+    max-width: 50%; /* 最大宽度为50% */
+    padding-right: 20px; /* 右侧留出一些空间 */
+  }
+  
+  .cart_photo img {
+    width: 100%; /* 图片宽度自适应 */
+    height: 100%;
+  }
+  
+  .cart_product {
+    flex: 1;
+    max-width: 95%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+  .cart_product.even-row{
+    background-color: #f2f2f2;
+  }
+  .cart_product.odd-row {
+    background-color: rgba(220, 220, 220, 0.753); /* 设置隔行颜色 */
+  }
+
+  .cart_product .product h3 {
+      margin: 0 0 10px;
+  }
+
+  .cart_product .product p {
+      margin: 4px 0;
+  }
+
+  .product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+  /* 按钮样式 */
+  .cart_product button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+  }
+
+  .cart_product button:hover {
+      background-color: #45a049;
+  }
+  
+  .cart-total-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #ddd; /* 可选的顶部边框 */
+    margin-top: 20px; /* 与购物车项目列表的间距 */
+    margin-top: 20px; /* 设置适当的上边距 */
+}
+
+  .total-amount {
+      font-size: 18px;
+      font-weight: bold;
+  }
+
+  .calculate-total {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  .calculate-total:hover {
+      background-color: #218838;
+  }
+
+ /* Footer */
+ footer {
+    text-align: center;
+    padding: 15px;
+    background: #333;
+    color: #fff;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    nav .menu {
+      flex-direction: column;
+    }
+  } 
